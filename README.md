@@ -60,7 +60,7 @@ flashSwapDeadline(bool _tri, int128 _borrow, int128 _pay, uint256 _borrowAmount,
 
 where `_deadline` simply is the last block where the trade should be executed. This is useful to minimize the gas spend if the transaction is included in a block too late to assume that we can actually use the opportunity. In larger trades, we suggest that this is `current+1`, simply stating that the transactions shall revert if not included in the next block.
 
-The actual arbitrage part of the contract is ver small, and simply performs an approval and trade on curve between the `_borrow` and `_pay` tokens. A snippet is seen here, but the rest is visible in `CurveArb.sol`.
+The actual arbitrage part of the contract is ver small, and simply performs an approval and trade on curve between the `_borrow` and `_pay` tokens. A snippet is seen here, but the rest is visible in [CurveArb.sol](./contracts/CurveArb.sol) `CurveArb.sol`.
 
 ```
 // Performing arbitrage using curve
