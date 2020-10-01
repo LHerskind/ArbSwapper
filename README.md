@@ -18,20 +18,7 @@ In practice, we cannot always do a Flashswap between A and B directly on Uniswap
 
 An example of a execution flow can be seen below. 
 
-
-
-```sequence
-owner->contract: Create
-user->contract: Perform arb DAI, USDC, 1K
-contract->uniswap: FlashSwap, USDC -> DAI
-uniswap->contract: Ok, here is 1K DAI
-contract->curve: Swap 1K DAI for USDC
-curve->contract: >1k USDC
-contract->uniswap: Pay back loan with USDC
-contract->owner: Profit
-```
-
-
+![Swapper flow, example](./Swapper.png)
 
 Hence we are using Uniswap and Curve, we will only have pairs that are on both. We are using the sUSD pool on curve, meaning that we will support DAI, USDC, USDT and sUSD. 
 
@@ -45,7 +32,7 @@ In this function, `_tri` simply tells the swapper if it is a triangular trade, i
 
 Both `_borrow` and `_pay` will be indexes in the sUSD pool on curve, meaning that 0 is DAI, 1 USDC, 2 USDT and 3 sUSD.  The `_borrowAmount` is then to be specified following the number of decimals for the `_borrow` token. 
 
-The `_profiteer` is the one who should receive the profit. 
+The `_profiteer` is the one who should receive the profit. We define it seperately hence we can then use a hotwallet with little funds to call the function but transfer any profits to a cold-wallet.
 
 * **DAI**: index 0 in curve, 18 decimals at `0x6B175474E89094C44Da98b954EedeAC495271d0F`
 * **USDC**: index 1 in curve, 6 decimals at `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`
