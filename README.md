@@ -1,4 +1,5 @@
-# ArbSwapper - Arbitrage with Flash Loans
+# Updated version at https://github.com/LHerskind/ArbSwapper-v2
+# ArbSwapper - Arbitrage with Flash Loans. 
 **Disclaimer**: This uniswap part of this code is based on https://github.com/flashswap/uniswap-flash-trade.
 
 ---
